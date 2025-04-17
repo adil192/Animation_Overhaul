@@ -122,13 +122,7 @@ dependencies {
 tasks.processResources {
     inputs.property("id", mod_id)
     inputs.property("name", mod_name)
-    val java = if (project.platform.mcMinor >= 19) {
-        21
-    } else if (project.platform.mcMinor >= 18) {
-        17
-    } else {
-        if (project.platform.mcMinor == 17) 16 else 8
-    }
+    val java = if (project.platform.mcMinor >= 21) 21 else 17
     val compatLevel = "JAVA_${java}"
     inputs.property("java", java)
     inputs.property("java_level", compatLevel)
