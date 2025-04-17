@@ -3,7 +3,7 @@
 kotlin = "1.8.22"
 
 # Config
-yacl = "3.1.1+1.20"
+yacl = "3.1.1+1.21"
 modMenu = "7.2.1"
 
 # Essential Dependencies

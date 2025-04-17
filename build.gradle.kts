@@ -20,6 +20,7 @@ val mod_version: String by project
 val mod_id: String by project
 
 val necronomicon_version: String by project
+val playeranimator_version_12101: String by project
 val playeranimator_version_12001: String by project
 val playeranimator_version_11902: String by project
 
@@ -78,9 +79,11 @@ dependencies {
     if (project.platform.isFabric) {
         modImplementation("maven.modrinth:necronomicon:${necronomicon_version}-fabric")
         
-        modImplementation("maven.modrinth:playeranimator:${playeranimator_version_12001}-fabric")
+        modImplementation("maven.modrinth:playeranimator:${playeranimator_version_12101}-fabric")
 
-        if (project.platform.mcMinor == 20) {
+        if (project.platform.mcMinor == 21) {
+            include("maven.modrinth:playeranimator:${playeranimator_version_12101}-fabric")
+        } else if (project.platform.mcMinor == 20) {
             include("maven.modrinth:playeranimator:${playeranimator_version_12001}-fabric")
         } else {
             include("maven.modrinth:playeranimator:${playeranimator_version_11902}-fabric")
@@ -88,16 +91,18 @@ dependencies {
     } else if (project.platform.isForge) {
         implementation("maven.modrinth:necronomicon:${necronomicon_version}-forge")
 
-        implementation("maven.modrinth:playeranimator:${playeranimator_version_12001}-forge")
-        
-        if (project.platform.mcMinor == 20) {
+        implementation("maven.modrinth:playeranimator:${playeranimator_version_12101}-forge")
+
+        if (project.platform.mcMinor == 21) {
+            include("maven.modrinth:playeranimator:${playeranimator_version_12101}-forge")
+        } else if (project.platform.mcMinor == 20) {
             include("maven.modrinth:playeranimator:${playeranimator_version_12001}-forge")
         } else {
             include("maven.modrinth:playeranimator:${playeranimator_version_11902}-forge")
         }
     }
 
-    implementation("maven.modrinth:spell-engine:${spellengine_version}+1.20.1-fabric")
+    implementation("maven.modrinth:spell-engine:${spellengine_version}+1.21.1-fabric")
 
     implementation("org.joml:joml:1.10.5")
     //include("org.joml:joml:1.10.5")
@@ -265,6 +270,7 @@ fun getInternalMcVersionStr(): String {
 
 fun getMcVersionList(): List<String> {
     return when (project.platform.mcVersionStr) {
+        "1.21.1" -> listOf("1.21", "1.21.1")
         "1.20.1" -> listOf("1.20", "1.20.1")
         "1.19.2" -> listOf("1.19.2")
         else -> error("Unknown version")
