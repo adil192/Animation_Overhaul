@@ -15,11 +15,11 @@ public class AnimationHolder {
     @Nullable private KeyframeAnimation animation;
     
     public AnimationHolder(ResourceLocation animation_id, boolean isEnabled, float speed) {
-        this(PlayerAnimationRegistry.getAnimation(animation_id), isEnabled, speed, 5);
+        this((KeyframeAnimation) PlayerAnimationRegistry.getAnimation(animation_id), isEnabled, speed, 5);
     }
 
     public AnimationHolder(ResourceLocation animation_id, boolean isEnabled) {
-        this(PlayerAnimationRegistry.getAnimation(animation_id), isEnabled, 1.0f, 5);
+        this((KeyframeAnimation) PlayerAnimationRegistry.getAnimation(animation_id), isEnabled, 1.0f, 5);
     }
 
     public AnimationHolder(@Nullable KeyframeAnimation animation, boolean isEnabled, float speed, int fade) {
