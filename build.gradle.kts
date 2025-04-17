@@ -5,9 +5,9 @@ import com.matthewprenger.cursegradle.Options
 import gg.essential.gradle.util.noServerRunConfigs
 
 plugins {
-    alias(libs.plugins.kotlin)
-    id(egt.plugins.multiversion.get().pluginId)
-    id(egt.plugins.defaults.get().pluginId)
+    kotlin("jvm") version "1.9.24"
+    id("gg.essential.multi-version")
+    id("gg.essential.defaults")
     alias(libs.plugins.shadow)
     alias(libs.plugins.blossom)
     alias(libs.plugins.minotaur)
@@ -29,11 +29,14 @@ val spellengine_version: String by project
 preprocess {
     vars.put("MODERN", if (project.platform.mcMinor >= 16) 1 else 0)
 }
-
-blossom {
-    replaceToken("@NAME@", mod_name)
-    replaceToken("@ID@", mod_id)
-    replaceToken("@VER@", mod_version)
+sourceSets {
+    main {
+        blossom {
+//            property("@NAME@", mod_name)
+//            property("@ID@", mod_id)
+//            property("@VER@", mod_version)
+        }
+    }
 }
 
 version = mod_version
@@ -56,7 +59,6 @@ loom {
 
     }
 
-    mixin.defaultRefmapName.set("${mod_id}.refmap.json")
 }
 
 repositories {
@@ -111,7 +113,9 @@ dependencies {
 tasks.processResources {
     inputs.property("id", mod_id)
     inputs.property("name", mod_name)
-    val java = if (project.platform.mcMinor >= 18) {
+    val java = if (project.platform.mcMinor >= 19) {
+        21
+    } else if (project.platform.mcMinor >= 18) {
         17
     } else {
         if (project.platform.mcMinor == 17) 16 else 8

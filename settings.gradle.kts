@@ -2,14 +2,15 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
-        maven("https://maven.fabricmc.net")
-        maven("https://maven.architectury.dev/")
-        maven("https://maven.minecraftforge.net")
         maven("https://repo.essential.gg/repository/maven-public")
+        maven("https://maven.architectury.dev")
+        maven("https://maven.fabricmc.net")
+        maven("https://maven.minecraftforge.net")
     }
     val egtVersion = "0.6.7"
     plugins {
         id("gg.essential.multi-version.root") version egtVersion
+        id("gg.essential.multi-version.api-validation") version egtVersion
     }
     dependencyResolutionManagement {
         versionCatalogs {
