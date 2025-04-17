@@ -28,6 +28,7 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ShovelItem;
@@ -139,48 +140,48 @@ public abstract class AbstractClientPlayerEntityMixin extends Player implements 
 
         var cfg = ANIMS.enabled_animations;
 
-        anim_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "idle"), cfg.idle.enabled));
-        anim_fall[0] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "fall_first"), cfg.fall.enabled));
-        anim_fall[1] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "fall_second"), cfg.fall.enabled));
-        anim_jump[0] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "jump_first"), cfg.jump.enabled));
-        anim_jump[1] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "jump_second"), cfg.jump.enabled));
-        anim_sneak_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "sneak_idle"), cfg.sneak_idle.enabled));
-        anim_sneak_walk = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "sneak_walk"), cfg.sneak_walk.enabled));
-        anim_walk = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "walking"), cfg.walk.enabled));
-        anim_run = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "running"), cfg.run.enabled));
-        anim_turn_right = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "turn_right"), cfg.turn_right.enabled));
-        anim_turn_left = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "turn_left"), cfg.turn_left.enabled));
-        anim_punch[0] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "punch_right"), cfg.punch.enabled));
-        anim_punch[1] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "punch_left"), cfg.punch.enabled));
-        anim_punch_sneaking[0] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "punch_right_sneak"), cfg.punch_sneaking.enabled));
-        anim_punch_sneaking[1] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "punch_left_sneak"), cfg.punch_sneaking.enabled));
-        anim_sword_swing[0] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "sword_swing_first"), cfg.sword_swing.enabled));
-        anim_sword_swing[1] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "sword_swing_second"), cfg.sword_swing.enabled));
-        anim_sword_swing_sneak[0] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "sword_swing_sneak_first"), cfg.sword_swing_sneak.enabled));
-        anim_sword_swing_sneak[1] = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "sword_swing_sneak_second"), cfg.sword_swing_sneak.enabled));
-        anim_falling = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "falling"), cfg.falling.enabled));
-        anim_slow_falling = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "slow_falling"), cfg.slow_falling.enabled));
-        anim_landing = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "landing"), cfg.landing.enabled));
-        anim_swimming = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "swimming"), cfg.swimming.enabled));
-        anim_swim_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "swim_idle"), cfg.swim_idle.enabled));
-        anim_crawl_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "crawl_idle"), cfg.crawl_idle.enabled));
-        anim_crawling = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "crawling"), cfg.crawling.enabled));
-        anim_eating = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "eating"), cfg.eating.enabled));
-        anim_drinking = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "drinking"), cfg.drinking.enabled));
-        anim_climbing = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "climbing"), cfg.climbing.enabled));
-        anim_climbing_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "climbing_idle"), cfg.climbing_idle.enabled));
-        anim_sprint_stop = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "sprint_stop"), cfg.sprint_stop.enabled));
-        anim_fence_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "fence_idle"), cfg.fence_idle.enabled));
-        anim_fence_walk = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "fence_walk"), cfg.fence_walk.enabled));
-        anim_edge_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "edge_idle"), cfg.edge_idle.enabled));
-        anim_elytra_fly = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "elytra_fly"), cfg.elytra_fly.enabled));
-        anim_flint_and_steel = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "flint_and_steel"), cfg.flint_and_steel.enabled));
-        anim_flint_and_steel_sneak = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "flint_and_steel_sneak"), cfg.flint_and_steel_sneak.enabled));
-        anim_boat_idle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "boat_idle"), cfg.boat_idle.enabled));
-        anim_boat_forward = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "boat_forward"), cfg.boat_forward.enabled));
-        anim_boat_right_paddle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "boat_right_paddle"), cfg.boat_right_paddle.enabled));
-        anim_boat_left_paddle = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "boat_left_paddle"), cfg.boat_left_paddle.enabled));
-        anim_rolling = validateHolder(new AnimationHolder(new ResourceLocation(AnimationOverhaul.MODID, "rolling"), cfg.rolling.enabled));
+        anim_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "idle"), cfg.idle.enabled);
+        anim_fall[0] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "fall_first"), cfg.fall.enabled);
+        anim_fall[1] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "fall_second"), cfg.fall.enabled);
+        anim_jump[0] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "jump_first"), cfg.jump.enabled);
+        anim_jump[1] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "jump_second"), cfg.jump.enabled);
+        anim_sneak_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "sneak_idle"), cfg.sneak_idle.enabled);
+        anim_sneak_walk = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "sneak_walk"), cfg.sneak_walk.enabled);
+        anim_walk = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "walking"), cfg.walk.enabled);
+        anim_run = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "running"), cfg.run.enabled);
+        anim_turn_right = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "turn_right"), cfg.turn_right.enabled);
+        anim_turn_left = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "turn_left"), cfg.turn_left.enabled);
+        anim_punch[0] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "punch_right"), cfg.punch.enabled);
+        anim_punch[1] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "punch_left"), cfg.punch.enabled);
+        anim_punch_sneaking[0] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "punch_right_sneak"), cfg.punch_sneaking.enabled);
+        anim_punch_sneaking[1] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "punch_left_sneak"), cfg.punch_sneaking.enabled);
+        anim_sword_swing[0] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "sword_swing_first"), cfg.sword_swing.enabled);
+        anim_sword_swing[1] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "sword_swing_second"), cfg.sword_swing.enabled);
+        anim_sword_swing_sneak[0] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "sword_swing_sneak_first"), cfg.sword_swing_sneak.enabled);
+        anim_sword_swing_sneak[1] = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "sword_swing_sneak_second"), cfg.sword_swing_sneak.enabled);
+        anim_falling = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "falling"), cfg.falling.enabled);
+        anim_slow_falling = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "slow_falling"), cfg.slow_falling.enabled);
+        anim_landing = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "landing"), cfg.landing.enabled);
+        anim_swimming = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "swimming"), cfg.swimming.enabled);
+        anim_swim_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "swim_idle"), cfg.swim_idle.enabled);
+        anim_crawl_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "crawl_idle"), cfg.crawl_idle.enabled);
+        anim_crawling = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "crawling"), cfg.crawling.enabled);
+        anim_eating = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "eating"), cfg.eating.enabled);
+        anim_drinking = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "drinking"), cfg.drinking.enabled);
+        anim_climbing = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "climbing"), cfg.climbing.enabled);
+        anim_climbing_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "climbing_idle"), cfg.climbing_idle.enabled);
+        anim_sprint_stop = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "sprint_stop"), cfg.sprint_stop.enabled);
+        anim_fence_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "fence_idle"), cfg.fence_idle.enabled);
+        anim_fence_walk = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "fence_walk"), cfg.fence_walk.enabled);
+        anim_edge_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "edge_idle"), cfg.edge_idle.enabled);
+        anim_elytra_fly = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "elytra_fly"), cfg.elytra_fly.enabled);
+        anim_flint_and_steel = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "flint_and_steel"), cfg.flint_and_steel.enabled);
+        anim_flint_and_steel_sneak = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "flint_and_steel_sneak"), cfg.flint_and_steel_sneak.enabled);
+        anim_boat_idle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "boat_idle"), cfg.boat_idle.enabled);
+        anim_boat_forward = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "boat_forward"), cfg.boat_forward.enabled);
+        anim_boat_right_paddle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "boat_right_paddle"), cfg.boat_right_paddle.enabled);
+        anim_boat_left_paddle = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "boat_left_paddle"), cfg.boat_left_paddle.enabled);
+        anim_rolling = new AnimationHolder(ResourceLocation.fromNamespaceAndPath(AnimationOverhaul.MODID, "rolling"), cfg.rolling.enabled);
     }
 
     public float turnDelta = 0;
@@ -288,8 +289,7 @@ public abstract class AbstractClientPlayerEntityMixin extends Player implements 
                     animationToPlay = anim_climbing;                    
                 }
             } else if (isUsingItem()) {
-                if (getMainHandItem().getItem().isEdible()) animationToPlay = anim_eating;
-            
+                if (getUseItem().getUseAnimation() == UseAnim.EAT) animationToPlay = anim_eating;
                 if (getUseItem().getUseAnimation() == UseAnim.DRINK) animationToPlay = anim_drinking;
             } else if (isFallFlying()) {
                 animationToPlay = anim_elytra_fly;
