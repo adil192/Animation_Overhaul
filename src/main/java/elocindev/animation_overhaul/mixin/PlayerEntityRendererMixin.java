@@ -81,7 +81,7 @@ public abstract class PlayerEntityRendererMixin
             v_scale = 1.0f;
         }
 
-        //#if MC==12001
+        //#if MC>=12001
         Quaternionf quat = new Quaternionf();
 
         quat = new Matrix4f().rotate(lean_x, new Vector3f(1, 0, 0)).rotate(lean_z, new Vector3f(0, 0, 1))
