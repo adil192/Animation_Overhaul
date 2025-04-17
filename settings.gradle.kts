@@ -7,7 +7,7 @@ pluginManagement {
         maven("https://maven.minecraftforge.net")
         maven("https://repo.essential.gg/repository/maven-public")
     }
-    val egtVersion = "0.2.2"
+    val egtVersion = "0.6.7"
     plugins {
         id("gg.essential.multi-version.root") version egtVersion
     }
