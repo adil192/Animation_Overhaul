@@ -30,8 +30,8 @@ rootProject.name = mod_name
 rootProject.buildFileName = "root.gradle.kts"
 
 listOf(
+    "1.21.1-forge",
     "1.21.1-fabric",
-    "1.21.1-neoforge",
     "1.20.1-fabric",
     "1.20.1-forge",
     "1.19.2-forge",
