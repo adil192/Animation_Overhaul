@@ -292,8 +292,11 @@ public abstract class AbstractClientPlayerEntityMixin extends Player implements 
                     animationToPlay = anim_climbing;                    
                 }
             } else if (isUsingItem()) {
-                if (getUseItem().getUseAnimation() == UseAnim.EAT) animationToPlay = anim_eating;
-                if (getUseItem().getUseAnimation() == UseAnim.DRINK) animationToPlay = anim_drinking;
+                animationToPlay = switch (getUseItem().getUseAnimation()) {
+                    case EAT -> anim_eating;
+                    case DRINK -> anim_drinking;
+                    default -> AnimationHolder.EMPTY;
+                };
             } else if (isFallFlying()) {
                 animationToPlay = anim_elytra_fly;
             } else if (onGround() || onGroundInWater) {

@@ -5,9 +5,9 @@ import com.matthewprenger.cursegradle.Options
 import gg.essential.gradle.util.noServerRunConfigs
 
 plugins {
-    kotlin("jvm") version "1.9.24"
-    id("gg.essential.multi-version")
-    id("gg.essential.defaults")
+    alias(libs.plugins.kotlin)
+    id(egt.plugins.multiversion.get().pluginId)
+    id(egt.plugins.defaults.get().pluginId)
     alias(libs.plugins.shadow)
     alias(libs.plugins.blossom)
     alias(libs.plugins.minotaur)
@@ -83,9 +83,6 @@ val shade: Configuration by configurations.creating {
 }
 
 dependencies {
-    implementation("org.joml:joml:1.10.5")
-    //include("org.joml:joml:1.10.5")
-
     val necronomicon_version = when (project.platform.mcMinor) {
         21 -> necronomicon_version_12101
         20 -> necronomicon_version_12001
@@ -115,8 +112,11 @@ dependencies {
             implementation("maven.modrinth:playeranimator:${playeranimator_version}-forge");
             include("maven.modrinth:playeranimator:${playeranimator_version}-forge");
         }
+        else -> {}
     }
 
+    implementation("org.joml:joml:1.10.5")
+    //include("org.joml:joml:1.10.5")
 }
 
 tasks.processResources {
